@@ -3,6 +3,8 @@ package dev.mashni.tarefinhas.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -19,8 +21,10 @@ import java.util.List;
 public class User implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @JdbcTypeCode(SqlTypes.CHAR)
+    @Column(length = 36, updatable = false, nullable = false)
+    private String id;
 
     @NotNull
     @Column(name = "email", unique = true)
@@ -31,6 +35,9 @@ public class User implements UserDetails {
     private String name;
 
     private String password;
+
+    @Column (name = "isDeleted")
+    private Boolean isDeleted = false;
 
 
     @Override

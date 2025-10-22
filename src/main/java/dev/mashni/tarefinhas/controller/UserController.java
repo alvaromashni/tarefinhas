@@ -37,6 +37,6 @@ public class UserController {
     public ResponseEntity<Void> updateUserByEmail(@RequestParam String email, @RequestBody User user){
         userService.updateUserByEmail(email, user);
         return ResponseEntity.ok().build();
-    } 
+    }
 
 }
