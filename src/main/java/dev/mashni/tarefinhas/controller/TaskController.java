@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/tasks")
+@RequestMapping("/tasks")
 public class TaskController {
 
     private TaskService taskService;
@@ -17,7 +17,7 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @PostMapping("/postTask")
+    @PostMapping("/createtask")
     public ResponseEntity<Void> postBook(@RequestBody Task task){
         taskService.saveTask(task);
         System.out.println("Tarefinha salva com sucesso.");

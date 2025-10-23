@@ -22,8 +22,6 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @JdbcTypeCode(SqlTypes.CHAR)
-    @Column(length = 36, updatable = false, nullable = false)
     private String id;
 
     @NotNull
