@@ -2,9 +2,8 @@ package dev.mashni.tarefinhas.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.*;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -26,6 +25,7 @@ public class User implements UserDetails {
 
     @NotNull
     @Column(name = "email", unique = true)
+    @Pattern(regexp = "\"^[^@\\\\s]+@[^@\\\\s]+\\\\.[^@\\\\s]+$", message = "Formato de e-mail inválido")
     private String email;
 
     @NotNull
